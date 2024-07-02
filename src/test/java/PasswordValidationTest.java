@@ -37,9 +37,9 @@ public class PasswordValidationTest {
 
     //Tests for Password Digit Validation Method
     @Test
-    public void hasDigitsTest_whenNoDigits_thenReturnFalse() {
+    public void hasDigitsTest_whenPassword_thenReturnFalse() {
         //GIVEN
-        String password = "password";
+        String password = "Password";
         //WHEN
         boolean actual = PasswordValidation.hasDigits(password);
         //THEN
@@ -47,16 +47,26 @@ public class PasswordValidationTest {
     }
 
     @Test
-    public void hasDigitsTest_whenHasDigits_thenReturnTrue() {
+    public void hasDigitsTest_whenPassword1234_thenReturnTrue() {
         //GIVEN
-        String password = "password1234";
+        String password = "Password1234";
         //WHEN
         boolean actual = PasswordValidation.hasDigits(password);
         //THEN
         assertTrue(actual);
     }
 
-    //Tests for Password Lower- and Uppercase Validation Method
+    @Test
+    public void hasDigitsTest_when1234_thenReturnTrue() {
+        //GIVEN
+        String password = "1234";
+        //WHEN
+        boolean actual = PasswordValidation.hasDigits(password);
+        //THEN
+        assertTrue(actual);
+    }
+
+    //Tests for Password Letter Case Validation Method
     @Test
     public void hasUpperAndLowerCaseCharsTest_whenpassword_thenReturnFalse() {
         //GIVEN
@@ -74,7 +84,6 @@ public class PasswordValidationTest {
         boolean actual = PasswordValidation.hasUpperAndLowerCaseChars(password);
         //THEN
         assertFalse(actual);
-
     }
 
     @Test
