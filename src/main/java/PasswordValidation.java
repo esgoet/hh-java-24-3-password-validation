@@ -30,4 +30,12 @@ public class PasswordValidation {
         return hasUpperCase && hasLowerCase;
     }
 
+    //Password Non-Simplicity Validation
+    public static boolean isNotCommon(String pw) {
+        String[] commonPWs = {"Password1", "Aa345678"};
+        for (String commonPW : commonPWs) {
+            if (pw.contains(commonPW)) { return false; }
+        }
+        return true;
+    }
 }

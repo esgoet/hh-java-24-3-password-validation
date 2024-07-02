@@ -105,4 +105,46 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
+
+    //Tests for Not Common Password Method
+    @Test
+    public void isNotCommonTest_whenPassword1_thenReturnFalse() {
+        //GIVEN
+        String password = "Password1";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    public void isNotCommonTest_whenPassword1234_thenReturnFalse() {
+        //GIVEN
+        String password = "Password1234";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    public void isNotCommonTest_whenAa345678_thenReturnFalse() {
+        //GIVEN
+        String password = "Aa345678";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    public void isNotCommonTest_whenNotC0mm0nPW_thenReturnTrue() {
+        //GIVEN
+        String password = "NotC0mm0nPW";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertTrue(actual);
+    }
+
 }
