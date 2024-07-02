@@ -22,6 +22,8 @@ public class PasswordValidation {
             }
             password = new String(passwordChars);
         }
+
+        //functionality to save generated pw so that it will not be returned again?
         return password;
     }
 

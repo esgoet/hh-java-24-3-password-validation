@@ -6,6 +6,15 @@ public class PasswordValidationTest {
 
     //Tests for Password Length Validation Method
     @Test
+    public void has8CharsPlusTest_whenEmpty_thenReturnFalse() {
+        //GIVEN
+        String password = "";
+        //WHEN
+        boolean actual = PasswordValidation.has8CharsPlus(password);
+        //THEN
+        assertFalse(actual);
+    }
+    @Test
     public void has8CharsPlusTest_whenPasswor_thenReturnFalse() {
         //GIVEN
         String password = "Passwor";
@@ -14,7 +23,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void has8CharsPlusTest_whenPassword_thenReturnTrue() {
         //GIVEN
@@ -24,7 +32,6 @@ public class PasswordValidationTest {
         //THEN
         assertTrue(actual);
     }
-
     @Test
     public void has8CharsPlusTest_whenPassword1234_thenReturnTrue() {
         //GIVEN
@@ -45,7 +52,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void hasDigitsTest_whenPassword1234_thenReturnTrue() {
         //GIVEN
@@ -55,7 +61,6 @@ public class PasswordValidationTest {
         //THEN
         assertTrue(actual);
     }
-
     @Test
     public void hasDigitsTest_when9_thenReturnTrue() {
         //GIVEN
@@ -85,7 +90,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void hasUpperAndLowerCaseCharsTest_whenPassword_thenReturnTrue() {
         //GIVEN
@@ -95,7 +99,6 @@ public class PasswordValidationTest {
         //THEN
         assertTrue(actual);
     }
-
     @Test
     public void hasLowerAndUpperCaseCharsTest_when1234_thenReturnFalse() {
         //GIVEN
@@ -116,7 +119,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void isNotCommonTest_whenAa345678_thenReturnFalse() {
         //GIVEN
@@ -126,7 +128,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void isNotCommonTest_whenHello9876_thenReturnFalse() {
         //GIVEN
@@ -136,7 +137,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void isNotCommonTest_when12Hello34_thenReturnTrue() {
         //GIVEN
@@ -146,7 +146,6 @@ public class PasswordValidationTest {
         //THEN
         assertTrue(actual);
     }
-
     @Test
     public void isNotCommonTest_whenNotC0mm0nPW_thenReturnTrue() {
         //GIVEN
@@ -167,7 +166,6 @@ public class PasswordValidationTest {
         //THEN
         assertFalse(actual);
     }
-
     @Test
     public void hasSpecialChars_whenPassword1$_thenReturnTrue() {
         //GIVEN
@@ -176,6 +174,17 @@ public class PasswordValidationTest {
         boolean actual = PasswordValidation.hasSpecialChars(password);
         //THEN
         assertTrue(actual);
+    }
+
+    // Tests for Strong Password Generator
+    @Test
+    public void generateStrongPassword_whenDoneTwice_thenReturnDifferentPasswords() {
+        //GIVEN
+        //WHEN
+        String pw1 = PasswordValidation.generateStrongPassword();
+        String pw2 = PasswordValidation.generateStrongPassword();
+        //THEN
+        assertNotEquals(pw1, pw2);
     }
 
 }
