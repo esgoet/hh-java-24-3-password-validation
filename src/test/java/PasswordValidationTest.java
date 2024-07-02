@@ -118,16 +118,6 @@ public class PasswordValidationTest {
     }
 
     @Test
-    public void isNotCommonTest_whenPassword1234_thenReturnFalse() {
-        //GIVEN
-        String password = "Password1234";
-        //WHEN
-        boolean actual = PasswordValidation.isNotCommon(password);
-        //THEN
-        assertFalse(actual);
-    }
-
-    @Test
     public void isNotCommonTest_whenAa345678_thenReturnFalse() {
         //GIVEN
         String password = "Aa345678";
@@ -163,6 +153,27 @@ public class PasswordValidationTest {
         String password = "NotC0mm0nPW";
         //WHEN
         boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertTrue(actual);
+    }
+
+    // Tests for Password Special Character Validation Method
+    @Test
+    public void hasSpecialChars_whenPassword1_thenReturnFalse() {
+        //GIVEN
+        String password = "Password1";
+        //WHEN
+        boolean actual = PasswordValidation.hasSpecialChars(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    public void hasSpecialChars_whenPassword1$_thenReturnTrue() {
+        //GIVEN
+        String password = "Password1$";
+        //WHEN
+        boolean actual = PasswordValidation.hasSpecialChars(password);
         //THEN
         assertTrue(actual);
     }

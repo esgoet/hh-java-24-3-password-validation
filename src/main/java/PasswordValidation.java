@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 public class PasswordValidation {
     public static void main(String[] args) {
-        System.out.println(isNotCommon("12Password34"));
 
     }
 
@@ -99,5 +98,13 @@ public class PasswordValidation {
         }
         //check if common words are used in combination with digit sequence or just one number
         return !(isCommonWord && hasOneDigit || isCommonWord && hasSequence);
+    }
+
+    //Password Special Characters Validation
+    public static boolean hasSpecialChars(String pw) {
+        //remove all alphabetical letters and digits from the string
+        String specialCharString = pw.replaceAll("[a-zA-Z0-9]", "");
+
+        return !specialCharString.isEmpty();
     }
 }
