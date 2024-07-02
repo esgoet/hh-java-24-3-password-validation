@@ -10,13 +10,13 @@ public class PasswordValidation {
 
     // Password Digit Validation
     public static boolean hasDigits(String pw) {
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i <= 9; i++) {
             if (pw.contains(String.valueOf(i))) { return true; }
         }
         return false;
     }
 
-    //Password contains Upper- and Lowercase Letters Validation
+    //Password Letter Case Validation
     public static boolean hasUpperAndLowerCaseChars(String pw) {
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
@@ -29,6 +29,5 @@ public class PasswordValidation {
         }
         return hasUpperCase && hasLowerCase;
     }
-
 
 }

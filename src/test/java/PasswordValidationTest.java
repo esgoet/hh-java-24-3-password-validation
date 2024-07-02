@@ -57,9 +57,9 @@ public class PasswordValidationTest {
     }
 
     @Test
-    public void hasDigitsTest_when1234_thenReturnTrue() {
+    public void hasDigitsTest_when9_thenReturnTrue() {
         //GIVEN
-        String password = "1234";
+        String password = "9";
         //WHEN
         boolean actual = PasswordValidation.hasDigits(password);
         //THEN
