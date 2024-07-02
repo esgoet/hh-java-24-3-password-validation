@@ -12,10 +12,7 @@ public class PasswordValidation {
 
     // Password Digit Validation
     public static boolean hasDigits(String pw) {
-        for (int i = 0; i <= 9; i++) {
-            if (pw.contains(String.valueOf(i))) { return true; }
-        }
-        return false;
+        return pw.matches(".*[0-9].*");
     }
 
     //Password Letter Case Validation
