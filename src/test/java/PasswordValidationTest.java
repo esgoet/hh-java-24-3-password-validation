@@ -55,4 +55,45 @@ public class PasswordValidationTest {
         //THEN
         assertTrue(actual);
     }
+
+    //Tests for Password Lower- and Uppercase Validation Method
+    @Test
+    public void hasUpperAndLowerCaseCharsTest_whenpassword_thenReturnFalse() {
+        //GIVEN
+        String password = "password";
+        //WHEN
+        boolean actual = PasswordValidation.hasUpperAndLowerCaseChars(password);
+        //THEN
+        assertFalse(actual);
+    }
+    @Test
+    public void hasUpperAndLowerCaseCharsTest_whenPASSWORD_thenReturnFalse() {
+        //GIVEN
+        String password = "PASSWORD";
+        //WHEN
+        boolean actual = PasswordValidation.hasUpperAndLowerCaseChars(password);
+        //THEN
+        assertFalse(actual);
+
+    }
+
+    @Test
+    public void hasUpperAndLowerCaseCharsTest_whenPassword_thenReturnTrue() {
+        //GIVEN
+        String password = "Password";
+        //WHEN
+        boolean actual = PasswordValidation.hasUpperAndLowerCaseChars(password);
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    public void hasLowerAndUpperCaseCharsTest_when1234_thenReturnFalse() {
+        //GIVEN
+        String password = "1234";
+        //WHEN
+        boolean actual = PasswordValidation.hasUpperAndLowerCaseChars(password);
+        //THEN
+        assertFalse(actual);
+    }
 }
