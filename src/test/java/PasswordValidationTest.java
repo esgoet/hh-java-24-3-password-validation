@@ -6,9 +6,9 @@ public class PasswordValidationTest {
 
     //Tests for Password Length Validation Method
     @Test
-    public void has8CharsPlusTest_when7Chars_thenReturnFalse() {
+    public void has8CharsPlusTest_whenPasswor_thenReturnFalse() {
         //GIVEN
-        String password = "passwor";
+        String password = "Passwor";
         //WHEN
         boolean actual = PasswordValidation.has8CharsPlus(password);
         //THEN
@@ -16,9 +16,9 @@ public class PasswordValidationTest {
     }
 
     @Test
-    public void has8CharsPlusTest_when8Chars_thenReturnTrue() {
+    public void has8CharsPlusTest_whenPassword_thenReturnTrue() {
         //GIVEN
-        String password = "password";
+        String password = "Password";
         //WHEN
         boolean actual = PasswordValidation.has8CharsPlus(password);
         //THEN
@@ -26,9 +26,9 @@ public class PasswordValidationTest {
     }
 
     @Test
-    public void has8CharsPlusTest_when12Chars_thenReturnTrue() {
+    public void has8CharsPlusTest_whenPassword1234_thenReturnTrue() {
         //GIVEN
-        String password = "password1234";
+        String password = "Password1234";
         //WHEN
         boolean actual = PasswordValidation.has8CharsPlus(password);
         //THEN
