@@ -1,5 +1,8 @@
+import java.util.Arrays;
+
 public class PasswordValidation {
     public static void main(String[] args) {
+        System.out.println(isNotCommon("12Password34"));
 
     }
 
@@ -32,10 +35,69 @@ public class PasswordValidation {
 
     //Password Non-Simplicity Validation
     public static boolean isNotCommon(String pw) {
-        String[] commonPWs = {"Password1", "Aa345678"};
-        for (String commonPW : commonPWs) {
-            if (pw.contains(commonPW)) { return false; }
+        //check if pw contains an ascending or descending digit sequence, or just one number
+        //get all Digits
+        boolean hasSequence = false;
+        boolean hasOneDigit = false;
+
+        // extract only digits from the string
+        String noCharString = pw.replaceAll("[^0-9]", ",");
+        String[] sequenceStrings = noCharString.split("[,]");
+
+        //  if there is more than 1 sequence, the password is not common
+        String digitString = "";
+        int sequenceCount = 0;
+        for (String digits : sequenceStrings) {
+            if (!digits.isEmpty()) {
+                sequenceCount++;
+                if (sequenceCount > 1) {
+                    return true;
+                } else {
+                    digitString = digits;
+                }
+            }
         }
-        return true;
+
+        // turn string into an int array
+        int[] digits = new int[digitString.length()];
+        for (int i = 0; i < digitString.length(); i++) {
+            digits[i] = Integer.parseInt(String.valueOf(digitString.charAt(i)));
+        }
+
+        //check how many digits there are
+        if (digits.length == 1) {
+            hasOneDigit = true;
+        } else {
+            // check for ascending sequence
+            int[] sortedDigits = Arrays.copyOf(digits, digits.length);
+            Arrays.sort(sortedDigits);
+            int[] reversedDigits = Arrays.copyOf(sortedDigits, sortedDigits.length);
+            // check for descending sequence
+            for (int i = 0; i < reversedDigits.length / 2; i++) {
+                int temp = reversedDigits[i];
+                reversedDigits[i] = reversedDigits[reversedDigits.length - 1 - i];
+                reversedDigits[reversedDigits.length - 1 - i] = temp;
+            }
+            if (Arrays.equals(digits, sortedDigits) || Arrays.equals(digits, reversedDigits)) {
+                hasSequence = true;
+            }
+        }
+
+        //check whether a common word is used
+        String[] commonWords = {"password", "aa", "hello"};
+        boolean isCommonWord = false;
+        String noDigitString = pw.replaceAll("[0-9]", ",");
+        //make sure that if a common word is used, it was not prior interrupted by a number
+        String[] wordStrings = noDigitString.split("[,]");
+        for (String wordString : wordStrings) {
+            for (String word : commonWords) {
+                if (wordString.toLowerCase().equals(word)) {
+                    isCommonWord = true;
+                    break;
+                }
+            }
+        }
+        //check if common words are used in combination with digit sequence or just one number
+        return !(isCommonWord && hasOneDigit || isCommonWord && hasSequence);
     }
 }

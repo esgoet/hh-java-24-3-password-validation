@@ -138,6 +138,26 @@ public class PasswordValidationTest {
     }
 
     @Test
+    public void isNotCommonTest_whenHello9876_thenReturnFalse() {
+        //GIVEN
+        String password = "Hello9876";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    public void isNotCommonTest_when12Hello34_thenReturnTrue() {
+        //GIVEN
+        String password = "12Hello34";
+        //WHEN
+        boolean actual = PasswordValidation.isNotCommon(password);
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
     public void isNotCommonTest_whenNotC0mm0nPW_thenReturnTrue() {
         //GIVEN
         String password = "NotC0mm0nPW";
