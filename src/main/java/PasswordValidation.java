@@ -2,7 +2,31 @@ import java.util.Arrays;
 
 public class PasswordValidation {
     public static void main(String[] args) {
+        System.out.println(generateStrongPassword());
+    }
 
+    public static String generateStrongPassword() {
+        String password = "";
+
+        // if it does not meet requirements for strong password, regenerate
+        while (!isStrongPassword(password)) {
+            // get a random Length for the password between 8 and 16 letters
+            int randLength = (int)(Math.random()*(16-8)) + 8;
+            char[] passwordChars = new char[randLength];
+
+            // for randLength times
+            // generate random Char from char set including uppercase, lowercase, digits and symbols
+            for (int i = 0; i < randLength; i++) {
+                char randomChar = (char)((Math.random()*(126-33))+33);
+                passwordChars[i] = randomChar;
+            }
+            password = new String(passwordChars);
+        }
+        return password;
+    }
+
+    public static boolean isStrongPassword(String pw) {
+        return has8CharsPlus(pw) && hasDigits(pw) && hasUpperAndLowerCaseChars(pw) && isNotCommon(pw) && hasSpecialChars(pw);
     }
 
     // Password Length (8 or more letters) Validation
